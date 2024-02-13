@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_api/provider/game_provider.dart';
+import 'package:quiz_api/screen/quiz_page.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
+import '../components/custom_button.dart';
 import '../components/custom_labe.dart';
 import '../components/logo.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,22 +30,17 @@ class LoginPage extends StatelessWidget {
             children: [
               const Gap(20),
               const Logo(),
-              const CustomLabel(
+              const CustomTexField(
                 labelText: "Enter your name",
               ),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 24),
-                height: 53,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppTheme.yellow,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  "Strart",
-                  style: AppTheme.textStyle(fontWeight_: FontWeight.bold),
-                ),
+              CustomButton(
+                onTap: () {
+                  Provider.of<GameProvider>(context, listen: false).init();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const QuizScren()));
+                },
+                label: "Start",
+                color: AppTheme.yellow,
               )
             ],
           ),

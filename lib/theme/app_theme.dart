@@ -8,7 +8,15 @@ class AppTheme {
   static double fontSiseBase = 18.0;
   static FontWeight fontWeight = FontWeight.w500;
   static Color yellow = const Color(0xffF8C660);
-  static FontWeight  semiBold = FontWeight.w600;
+  static FontWeight semiBold = FontWeight.w600;
+
+  static double screenHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
+
+  static double screenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
+  }
 
   static ThemeData themeData() {
     return ThemeData(

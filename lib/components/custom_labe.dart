@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
-class CustomLabel extends StatefulWidget {
+class CustomTexField extends StatefulWidget {
   final String labelText;
-  const CustomLabel({super.key, required this.labelText});
+  const CustomTexField({super.key, required this.labelText});
 
   @override
-  State<CustomLabel> createState() => _CustomLabelState();
+  State<CustomTexField> createState() => _CustomLabelState();
 }
 
-class _CustomLabelState extends State<CustomLabel> {
+class _CustomLabelState extends State<CustomTexField> {
   @override
   Widget build(BuildContext context) {
     return Padding(

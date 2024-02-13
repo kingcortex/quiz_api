@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_api/provider/game_provider.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
 import 'screen/login_page.dart';
@@ -13,9 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => GameProvider(),
+        )
+      ],
+      child: MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.themeData(),
-        home: const LoginPage());
+        home: const LoginPage(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
   }
 }

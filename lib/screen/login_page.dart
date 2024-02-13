@@ -34,10 +34,13 @@ class _LoginPageState extends State<LoginPage> {
                 labelText: "Enter your name",
               ),
               CustomButton(
-                onTap: () {
+                onTap: () async {
                   Provider.of<GameProvider>(context, listen: false).init();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const QuizScren()));
+                  await Future.delayed(const Duration(seconds: 2));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const QuizScren()));
                 },
                 label: "Start",
                 color: AppTheme.yellow,

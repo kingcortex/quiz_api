@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../components/response_tile.dart';
 import '../model/question_model.dart';
 
 class GameProvider extends ChangeNotifier {
   bool canSelected = true;
   int index = 0;
+  final List<GlobalKey<ResponseTileState>> responseTileKeys = [
+    GlobalKey<ResponseTileState>(),
+    GlobalKey<ResponseTileState>(),
+    GlobalKey<ResponseTileState>(),
+    GlobalKey<ResponseTileState>(),
+  ];
   Question? currentQuestion;
   List<Question> questions = [
     Question(
@@ -90,11 +97,16 @@ class GameProvider extends ChangeNotifier {
   ];
 
   void init() {
+    canSelected = true;
     index = 0;
     currentQuestion = questions[index];
   }
 
   void nextQuestion() {
+    canSelected = true;
+    for (var element in responseTileKeys) {
+      element.currentState!.init();
+    }
     if (index < questions.length) {
       index++;
       currentQuestion = questions[index];
@@ -104,9 +116,9 @@ class GameProvider extends ChangeNotifier {
   }
 
   //Fonction qui se lance quand le user choisie une reponse
-  void corrector({required bool choice, required Function? select}) {
-    if (choice == false) {
-      select;
+  void corrector() {
+    for (var element in responseTileKeys) {
+      element.currentState!.correction();
     }
     notifyListeners();
   }

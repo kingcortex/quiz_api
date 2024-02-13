@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_api/provider/game_provider.dart';
+import 'package:quiz_api/screen/loading_page.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
 import 'screen/login_page.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.themeData(),
-        home: const LoginPage(),
+        home: const LoadingScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

@@ -88,6 +88,13 @@ class _QuizSectionState extends State<QuizSection> {
     double rectangleHeight = MediaQuery.of(context).size.height * 0.24;
     double rectangleWidth = MediaQuery.of(context).size.width - 24;
     double circleRaduis = AppTheme.screenHeight(context) * 0.0922;
+
+    //////////
+    /// Clée des reponseTile
+    /////////
+    final List<GlobalKey<ResponseTileState>> responseTileKeys =
+        Provider.of<GameProvider>(context, listen: false).responseTileKeys;
+
     return Consumer<GameProvider>(builder: (context, gameProvider, child) {
       List<Map<String, dynamic>> answers = [
         gameProvider.currentQuestion!.answerA,
@@ -173,7 +180,8 @@ class _QuizSectionState extends State<QuizSection> {
             ],
           ),
           Gap(MediaQuery.of(context).size.height * 0.07),
-          for (var i = 0; i < 4; i++) ResponseTile(answer: answers[i]),
+          for (var i = 0; i < 4; i++)
+            ResponseTile(key: responseTileKeys[i], answer: answers[i]),
           Gap(AppTheme.screenHeight(context) * 0.095),
           CustomButton(
             onTap:

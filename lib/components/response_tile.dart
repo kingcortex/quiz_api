@@ -51,6 +51,8 @@ class ResponseTileState extends State<ResponseTile> {
               gameProvider.canSelected = false;
               if (widget.answer["isCorrect"] == false) {
                 gameProvider.corrector();
+              }else{
+                gameProvider.addScore();
               }
             }
           },

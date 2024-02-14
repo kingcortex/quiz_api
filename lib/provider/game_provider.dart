@@ -4,6 +4,7 @@ import '../components/response_tile.dart';
 import '../model/question_model.dart';
 
 class GameProvider extends ChangeNotifier {
+  int score = 0;
   bool canSelected = true;
   int index = 0;
   final List<GlobalKey<ResponseTileState>> responseTileKeys = [
@@ -97,6 +98,7 @@ class GameProvider extends ChangeNotifier {
   ];
 
   void init() {
+    score = 0;
     canSelected = true;
     index = 0;
     currentQuestion = questions[index];
@@ -121,5 +123,9 @@ class GameProvider extends ChangeNotifier {
       element.currentState!.correction();
     }
     notifyListeners();
+  }
+
+  void addScore() {
+    score++;
   }
 }

@@ -19,9 +19,10 @@ class Logo extends StatelessWidget {
           Text(
             "Quiz",
             style: AppTheme.textStyle(
-                color: AppTheme.primaryColor,
-                fontSize: 40,
-                fontWeight_: AppTheme.semiBold),
+              color: AppTheme.primaryColor,
+              fontSize: 40,
+              fontWeight_: AppTheme.semiBold,
+            ),
           ),
           Transform.translate(
             offset: const Offset(50, 35),

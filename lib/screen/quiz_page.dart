@@ -8,16 +8,17 @@ import 'package:quiz_api/components/quiz_app_bar.dart';
 import 'package:quiz_api/components/response_tile.dart';
 import 'package:quiz_api/model/question_model.dart';
 import 'package:quiz_api/provider/game_provider.dart';
+import 'package:quiz_api/router/app_route.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
-class QuizScren extends StatefulWidget {
-  const QuizScren({super.key});
+class QuizPage extends StatefulWidget {
+  const QuizPage({super.key});
 
   @override
-  State<QuizScren> createState() => _QuizScrenState();
+  State<QuizPage> createState() => _QuizPageState();
 }
 
-class _QuizScrenState extends State<QuizScren> {
+class _QuizPageState extends State<QuizPage> {
   late Question currentQuestion;
   @override
   void initState() {
@@ -33,8 +34,8 @@ class _QuizScrenState extends State<QuizScren> {
       body: SafeArea(
         child: Column(
           children: [
-            Gap(10),
-            QuizAppBar(),
+            const Gap(10),
+            const QuizAppBar(),
             QuizSection(
               question: currentQuestion,
             ),
@@ -71,6 +72,13 @@ class _QuizSectionState extends State<QuizSection> {
           setState(() {
             seconds--;
           });
+        } else {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoute.scorePage,
+            (route) => false,
+            arguments: Provider.of<GameProvider>(context, listen: false).score,
+          );
         }
       },
     );

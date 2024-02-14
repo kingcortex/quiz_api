@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
-import 'package:quiz_api/provider/game_provider.dart';
-import 'package:quiz_api/screen/quiz_page.dart';
+import 'package:quiz_api/screen/loading_page.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
 import '../components/custom_button.dart';
@@ -35,12 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CustomButton(
                 onTap: () async {
-                  Provider.of<GameProvider>(context, listen: false).init();
-                  await Future.delayed(const Duration(seconds: 2));
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const QuizScren()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoadingPage()));
                 },
                 label: "Start",
                 color: AppTheme.yellow,

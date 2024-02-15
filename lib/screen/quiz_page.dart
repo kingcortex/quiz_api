@@ -187,10 +187,18 @@ class _QuizSectionState extends State<QuizSection> {
               ),
             ],
           ),
-          Gap(MediaQuery.of(context).size.height * 0.07),
-          for (var i = 0; i < 4; i++)
-            ResponseTile(key: responseTileKeys[i], answer: answers[i]),
-          Gap(AppTheme.screenHeight(context) * 0.095),
+          Gap(MediaQuery.of(context).size.height * 0.05),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.446566,
+            width: double.infinity,
+            child: ListView(
+              children: [
+                for (var i = 0; i < 4; i++)
+                  ResponseTile(key: responseTileKeys[i], answer: answers[i]),
+              ],
+            ),
+          ),
+          //Gap(AppTheme.screenHeight(context) * 0.07),
           CustomButton(
             onTap:
                 Provider.of<GameProvider>(context, listen: false).nextQuestion,

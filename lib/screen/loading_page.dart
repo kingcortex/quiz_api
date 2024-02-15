@@ -8,21 +8,25 @@ import 'package:quiz_api/theme/app_theme.dart';
 import '../provider/game_provider.dart';
 
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({super.key});
+  final String categorie;
+  const LoadingPage({super.key, required this.categorie});
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  Future<void> loadData() async {
+    await Provider.of<GameProvider>(context, listen: false)
+        .init(categorie: widget.categorie);
+    await Future.delayed(const Duration(seconds: 2));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const QuizPage()));
+  }
+
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () async {
-      Provider.of<GameProvider>(context, listen: false).init();
-      await Future.delayed(const Duration(seconds: 2));
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const QuizPage()));
-    });
+    loadData();
     super.initState();
   }
 

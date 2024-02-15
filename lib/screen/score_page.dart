@@ -161,7 +161,7 @@ class _ScorePageState extends State<ScorePage>
             CustomButton(
               onTap: () {
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(AppRoute.login, (route) => false);
+                    .pushNamedAndRemoveUntil(AppRoute.home, (route) => false);
               },
               label: "Go To Home",
               color: AppTheme.primaryColor,

@@ -51,7 +51,7 @@ class ResponseTileState extends State<ResponseTile> {
               gameProvider.canSelected = false;
               if (widget.answer["isCorrect"] == false) {
                 gameProvider.corrector();
-              }else{
+              } else {
                 gameProvider.addScore();
               }
             }
@@ -60,10 +60,10 @@ class ResponseTileState extends State<ResponseTile> {
             duration: const Duration(microseconds: 500),
             curve: Curves.bounceInOut,
             padding: EdgeInsets.symmetric(
-              vertical: AppTheme.screenHeight(context) * 0.01,
+              vertical: AppTheme.screenHeight(context) * 0.00,
               horizontal: AppTheme.screenHeight(context) * 0.03,
             ),
-            height: AppTheme.screenHeight(context) * 0.056,
+            //height: AppTheme.screenHeight(context) * 0.056,
             width: MediaQuery.of(context).size.width - 24,
             decoration: BoxDecoration(
               color: isSelected ? activeColor : Colors.white,
@@ -81,12 +81,18 @@ class ResponseTileState extends State<ResponseTile> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  widget.answer["text"],
-                  style: AppTheme.textStyle(
+                SizedBox(
+                  width: MediaQuery.of(context).size.width -
+                      24 -
+                      AppTheme.screenHeight(context) * 0.138,
+                  child: Text(
+                    widget.answer["text"] ?? "<EMPTY>",
+                    style: AppTheme.textStyle(
                       color: Colors.black,
                       fontWeight_: AppTheme.semiBold,
-                      fontSize: 14),
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
                 Checkbox(
                   activeColor: AppTheme.primaryColor,

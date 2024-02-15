@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_api/services/api_service.dart';
 
 import '../components/response_tile.dart';
 import '../model/question_model.dart';
@@ -14,7 +15,8 @@ class GameProvider extends ChangeNotifier {
     GlobalKey<ResponseTileState>(),
   ];
   Question? currentQuestion;
-  List<Question> questions = [
+  List<Question> questions = [];
+  List<Question> questionsTest = [
     Question(
       id: 1,
       question: "Quel est la capitale de la France ?",
@@ -97,7 +99,9 @@ class GameProvider extends ChangeNotifier {
     ),
   ];
 
-  void init() {
+  Future<void> init({required String categorie}) async {
+    questions =
+        await ApiService.getQuestionByCaterory(categorie) ?? questionsTest;
     score = 0;
     canSelected = true;
     index = 0;
@@ -105,16 +109,18 @@ class GameProvider extends ChangeNotifier {
   }
 
   void nextQuestion() {
-    canSelected = true;
-    for (var element in responseTileKeys) {
-      element.currentState!.init();
+    if (index < 10) {
+      canSelected = true;
+      for (var element in responseTileKeys) {
+        element.currentState!.init();
+      }
+      if (index < questions.length) {
+        index++;
+        currentQuestion = questions[index];
+        notifyListeners();
+      }
+      print(index);
     }
-    if (index < questions.length) {
-      index++;
-      currentQuestion = questions[index];
-      notifyListeners();
-    }
-    print(index);
   }
 
   //Fonction qui se lance quand le user choisie une reponse

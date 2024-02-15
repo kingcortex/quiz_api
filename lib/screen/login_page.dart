@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:quiz_api/screen/loading_page.dart';
+import 'package:quiz_api/router/app_route.dart';
 import 'package:quiz_api/theme/app_theme.dart';
 
 import '../components/custom_button.dart';
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CustomButton(
                 onTap: () async {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoadingPage()));
+                  Navigator.pushReplacementNamed(context, AppRoute.home);
                 },
                 label: "Start",
                 color: AppTheme.yellow,

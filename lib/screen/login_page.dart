@@ -31,12 +31,15 @@ class _LoginPageState extends State<LoginPage> {
               const CustomTexField(
                 labelText: "Enter your name",
               ),
-              CustomButton(
-                onTap: () async {
-                  Navigator.pushReplacementNamed(context, AppRoute.home);
-                },
-                label: "Start",
-                color: AppTheme.yellow,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: CustomButton(
+                  onTap: () async {
+                    Navigator.pushReplacementNamed(context, AppRoute.home);
+                  },
+                  label: "Start",
+                  color: AppTheme.yellow,
+                ),
               )
             ],
           ),

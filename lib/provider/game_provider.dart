@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_api/router/app_route.dart';
 import 'package:quiz_api/services/api_service.dart';
 
 import '../components/response_tile.dart';
 import '../model/question_model.dart';
 
 class GameProvider extends ChangeNotifier {
+  int points = 10000;
   int score = 0;
   bool canSelected = true;
   int index = 0;
@@ -108,8 +110,8 @@ class GameProvider extends ChangeNotifier {
     currentQuestion = questions[index];
   }
 
-  void nextQuestion() {
-    if (index < 10) {
+  void nextQuestion({required BuildContext context}) {
+    if (index < 9) {
       canSelected = true;
       for (var element in responseTileKeys) {
         element.currentState!.init();
@@ -119,7 +121,10 @@ class GameProvider extends ChangeNotifier {
         currentQuestion = questions[index];
         notifyListeners();
       }
-      print(index);
+    } else if (index == 9) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoute.scorePage, (route) => false,
+          arguments: score);
     }
   }
 
@@ -133,5 +138,6 @@ class GameProvider extends ChangeNotifier {
 
   void addScore() {
     score++;
+    notifyListeners();
   }
 }

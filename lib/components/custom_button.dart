@@ -8,8 +8,15 @@ class CustomButton extends StatefulWidget {
   final Function? onTap;
   final String label;
   final Color color;
+  final double? width;
+  final Color? texColor;
   const CustomButton(
-      {super.key, this.onTap, required this.label, required this.color});
+      {super.key,
+      this.onTap,
+      required this.label,
+      required this.color,
+      this.width,
+      this.texColor});
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -57,16 +64,18 @@ class _CustomButtonState extends State<CustomButton> {
         duration: const Duration(milliseconds: 200),
         curve: Curves.bounceInOut,
         alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 24),
         height: 53,
-        width: double.infinity,
+        width: widget.width ?? double.infinity,
         decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
           widget.label,
-          style: AppTheme.textStyle(fontWeight_: FontWeight.bold),
+          style: AppTheme.textStyle(
+            color: widget.texColor,
+            fontWeight_: FontWeight.bold,
+          ),
         ),
       ),
     );

@@ -199,11 +199,16 @@ class _QuizSectionState extends State<QuizSection> {
             ),
           ),
           //Gap(AppTheme.screenHeight(context) * 0.07),
-          CustomButton(
-            onTap:
-                Provider.of<GameProvider>(context, listen: false).nextQuestion,
-            label: "Next",
-            color: AppTheme.primaryColor,
+          Consumer<GameProvider>(
+            builder: (context, gameProvider, child) {
+              return CustomButton(
+                onTap: () {
+                  gameProvider.nextQuestion(context: context);
+                },
+                label: gameProvider.index <9  ? "Next" : "Finish",
+                color: AppTheme.primaryColor,
+              );
+            },
           )
         ],
       );

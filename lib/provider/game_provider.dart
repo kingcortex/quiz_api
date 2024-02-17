@@ -136,6 +136,15 @@ class GameProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void playAgain({required BuildContext context}) {
+    score = 0;
+    canSelected = true;
+    index = 0;
+    currentQuestion = questions[index];
+    Navigator.pushNamedAndRemoveUntil(
+        context, AppRoute.quizPage, (route) => false);
+  }
+
   void addScore() {
     score++;
     notifyListeners();

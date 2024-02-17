@@ -158,8 +158,8 @@ class _ScorePageState extends State<ScorePage>
                       child: CustomButton(
                         width: 100,
                         onTap: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              AppRoute.home, (route) => false);
+                          Provider.of<GameProvider>(context, listen: false)
+                              .playAgain(context: context);
                         },
                         label: "Play Again",
                         color: AppTheme.primaryColor,

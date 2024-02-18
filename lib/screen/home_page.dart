@@ -18,10 +18,10 @@ class _HomePageState extends State<HomePage> {
   List<Categorie> categories = [
     Categorie(title: 'Linux', image: "assets/categorie_img/linux.png"),
     Categorie(title: 'DevOps', image: "assets/categorie_img/devops.png"),
+    Categorie(title: 'Docker', image: "assets/categorie_img/docker.png"),
     Categorie(title: 'Networking', image: "assets/categorie_img/networking.png"),
     Categorie(title: 'code', image: "assets/categorie_img/programming.png"),
     Categorie(title: 'Cloud', image: "assets/categorie_img/cloud.png"),
-    Categorie(title: 'Docker', image: "assets/categorie_img/docker.png"),
   ];
 
   @override

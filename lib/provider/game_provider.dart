@@ -6,7 +6,7 @@ import '../components/response_tile.dart';
 import '../model/question_model.dart';
 
 class GameProvider extends ChangeNotifier {
-  int points = 10000;
+  int points = 0;
   int score = 0;
   bool canSelected = true;
   int index = 0;
@@ -102,8 +102,9 @@ class GameProvider extends ChangeNotifier {
   ];
 
   Future<void> init({required String categorie}) async {
-    questions =
-        await ApiService.getQuestionByCaterory(categorie) ?? questionsTest;
+    questions = await ApiService.getQuestionByCaterory(categorie) ??
+        await ApiService.getRandomQuestion() ??
+        questionsTest;
     score = 0;
     canSelected = true;
     index = 0;

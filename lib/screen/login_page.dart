@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: CustomButton(
-                  onTap: () async {
+                  onTap: (){
                     Navigator.pushReplacementNamed(context, AppRoute.home);
                   },
                   label: "Start",

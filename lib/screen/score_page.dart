@@ -145,6 +145,8 @@ class _ScorePageState extends State<ScorePage>
                       child: CustomButton(
                         width: 100,
                         onTap: () {
+                          Provider.of<GameProvider>(context, listen: false).points =
+                              Provider.of<GameProvider>(context, listen: false).points + score;
                           Navigator.of(context).pushNamedAndRemoveUntil(
                               AppRoute.home, (route) => false);
                         },

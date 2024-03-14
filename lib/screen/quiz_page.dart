@@ -36,8 +36,11 @@ class _QuizPageState extends State<QuizPage> {
           children: [
             const Gap(10),
             const QuizAppBar(),
-            QuizSection(
-              question: currentQuestion,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: QuizSection(
+                question: currentQuestion,
+              ),
             ),
           ],
         ),
@@ -205,7 +208,7 @@ class _QuizSectionState extends State<QuizSection> {
                 onTap: () {
                   gameProvider.nextQuestion(context: context);
                 },
-                label: gameProvider.index <9  ? "Next" : "Finish",
+                label: gameProvider.index < 9 ? "Next" : "Finish",
                 color: AppTheme.primaryColor,
               );
             },

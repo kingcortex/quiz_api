@@ -37,6 +37,7 @@ class _CustomLabelState extends State<CustomTexField> {
             ),
             child: Center(
               child: TextField(
+                keyboardType: TextInputType.name,
                 style: AppTheme.textStyle(),
                 cursorColor: AppTheme.primeryTextColor,
                 decoration: InputDecoration(

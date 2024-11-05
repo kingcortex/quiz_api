@@ -192,7 +192,7 @@ class _QuizSectionState extends State<QuizSection> {
           ),
           Gap(MediaQuery.of(context).size.height * 0.05),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.446566,
+            height: MediaQuery.of(context).size.height * 0.43,
             width: double.infinity,
             child: ListView(
               children: [

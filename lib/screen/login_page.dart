@@ -19,30 +19,26 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Gap(20),
-              const Logo(),
-              const CustomTexField(
-                labelText: "Enter your name",
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Gap(40),
+            const Logo(),
+            const CustomTexField(
+              labelText: "Enter your name",
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: CustomButton(
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, AppRoute.home);
+                },
+                label: "Start",
+                color: AppTheme.yellow,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: CustomButton(
-                  onTap: (){
-                    Navigator.pushReplacementNamed(context, AppRoute.home);
-                  },
-                  label: "Start",
-                  color: AppTheme.yellow,
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

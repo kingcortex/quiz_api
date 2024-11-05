@@ -60,7 +60,7 @@ class ResponseTileState extends State<ResponseTile> {
             duration: const Duration(microseconds: 500),
             curve: Curves.bounceInOut,
             padding: EdgeInsets.symmetric(
-              vertical: AppTheme.screenHeight(context) * 0.00,
+              vertical: AppTheme.screenHeight(context) * 0.009,
               horizontal: AppTheme.screenHeight(context) * 0.03,
             ),
             //height: AppTheme.screenHeight(context) * 0.056,
